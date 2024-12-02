@@ -1,10 +1,4 @@
 import streamlit as st
-import os
-
-# Set Figures directory
-figures_dir = '../Figures'
-current_dir = os.getcwd()
-os.chdir(figures_dir)
 
 # Set up the main structure of the Streamlit App
 def main():
