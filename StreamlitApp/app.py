@@ -104,7 +104,7 @@ def eda():
 # Age and Gender Subsection
 def age_gender():
     st.write("Let's first take a quick look at the basic demographics.")
-    st.subheader("Age Group Distribution")
+    st.markdown("## Age Group Distribution")
     table_age = """
     | Age Group         | Count (%)       |
     |-------------------|----------------|
@@ -113,7 +113,7 @@ def age_gender():
     | Young Adults (20-22) | 61 (1.54%)  |
     """
     st.markdown(table_age)
-    st.subheader("Sex Category Distribution")
+    st.markdown("## Sex Category Distribution")
     table_gender = """
     | Basic_Demos-Sex-Category | Count (%)      |
     |--------------------------|----------------|
