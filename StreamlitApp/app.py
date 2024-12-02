@@ -148,7 +148,7 @@ def sii_pciat_visualization():
         provide a comprehensive view of internet use and its effects from both perspectives. In the present, scores 
         for 20 questions are provided with missing values that cuase reduction in the total score.
         """)
-    st.write("Here you will find visualizations of SII distribution and related statistics.")
+    st.write("Here you will find visualizations of SII/PCIAT distribution and related statistics.")
     st.image(os.path.join(figures_dir, "Distribution of SII.png"), use_column_width=True)
     st.image(os.path.join(figures_dir, "Distribution of PCIAT_Total.png"), use_column_width=True)
     st.markdown("""
@@ -161,7 +161,7 @@ def sii_pciat_visualization():
     st.write("Now, let's take a closer look here!")
     st.image(os.path.join(figures_dir, "SII and PCIAT_Total Box.png"), use_column_width=True)
     st.image(os.path.join(figures_dir, "SII by Age Pi-Chart.png"), use_column_width=True)
-    
+    st.markdown("Tabular statistics of SII")
     table_md = """
     | Age Group          | Missing       | 0 (None)       | 1 (Mild)       | 2 (Moderate)   | 3 (Severe)     | Total |
     |--------------------|---------------|----------------|----------------|----------------|----------------|-------|
@@ -171,15 +171,15 @@ def sii_pciat_visualization():
     """
     st.markdown(table_md)
     st.markdown("""
-    **Notes:**
-    - Higher sii scores are generally associated with older age groups.
-    - There is an increasing-decreasing trend seen in the box plots of PCIAT_Total scores with age groups indicating
-    that the peak of internet-related problems occur during teenage period.
-    - Based on the pie-chart, 
-        - sii scores are more skewed towards the None and Mild categories.
-        - Young adults have a significant missingness.
-        - Teenagers seem to have more balanced categories.
-                """)
+        **Notes:**
+        - Higher sii scores are generally associated with older age groups.
+        - There is an increasing-decreasing trend seen in the box plots of PCIAT_Total scores with age groups indicating
+        that the peak of internet-related problems occur during teenage period.
+        - Based on the pie-chart, 
+            - sii scores are more skewed towards the None and Mild categories.
+            - Young adults have a significant missingness.
+            - Teenagers seem to have more balanced categories.
+            """)
 
 # Internet Use Subsection
 def internet_use():
