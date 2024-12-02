@@ -19,6 +19,9 @@ The tabular data in *train.csv* and *test.csv* comprises measurements from a var
 * **Note** in particular the field PCIAT-PCIAT_Total. The target sii for this competition is derived from this field as described in the data dictionary: 0 for None, 1 for Mild, 2 for Moderate, and 3 for Severe. Additionally, each participant has been assigned a unique identifier id.
 
 ## Directories
+* **Data:** Contains all the data csv files.
+* **Notebooks:** Contains the EDA, Missingness Handling, PCA, and Modeling (Classification).
+* **StreamlitApp:** Contains the app and figures.
 
 **[Project and Data Source](https://www.kaggle.com/competitions/child-mind-institute-problematic-internet-use/overview)**
 
