@@ -800,12 +800,12 @@ def overview_model():
         Since our goal is to predict/classify the sii score, which is an ordinal target variable, we should consider
         models that are well-suited for classification (since sii takes discrete values like 0, 1, 2, 3) or regression
         (since it has a clear order). Owing to the imablance issue in the dataset, two models that are initially 
-        suitable for such datasets are choses.
+        suitable for such datasets are chosen.
         
         1. Gradient Boosting Classifier (GBM):
             
         - Learns sequentially by focusing on the errors of the previous iterations.
-        - Handles imbalanced datasets well when tuned
+        - Handles imbalanced datasets well when tuned.
         - Can achieve high precision and recall by optimizing for specific metrics.
         - It is excellent for capturing patterns in datasets where class boundaries are non-linear and noisy.
         
