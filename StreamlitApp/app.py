@@ -5,6 +5,12 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 figures_dir = os.path.join(current_dir, 'Figures')
 
+st.set_page_config(
+    page_title="Child Mind Institute — Problematic Internet Use",
+    page_icon=os.path.join(os.path.join(figures_dir, "logo.png")),
+    layout="wide",
+)
+
 # Set up the main structure of the Streamlit App
 def main():
     # Sidebar Navigation
