@@ -85,7 +85,7 @@ def eda():
     if eda_selected == "Age & Gender":
         age_gender()
     elif eda_selected == "SII and PCIAT":
-        sii_visualization()
+        sii_pciat_visualization()
     elif eda_selected == "Internet Use":
         internet_use()
     elif eda_selected == "Children Global Assessment Scale":
@@ -129,9 +129,25 @@ def age_gender():
     age groups.
     """)
 
-# SII Visualization Subsection
-def sii_visualization():
-    st.subheader("Severity Impairment Index (SII) Visualization")
+# SII and PCIAT Visualization Subsection
+def sii_pciat_visualization():
+    st.subheader("Severity Impairment Index (SII) Parent-Child Internet Addiction Test (PCIAT) Total Score Visualization")
+    st.markdown("""
+        Let's have a brief overview of SII and PCIAT:
+        
+        The Severity Impairment Index (SII) is a measure used to assess the level of impairment caused by a 
+        particular condition or behavior. In the context of internet addiction or other behavioral studies, the 
+        SII evaluates the severity of the impairment in daily functioning caused by the condition. It quantifies
+        the degree to which an individual’s life is disrupted by the behavior, such as problematic internet use,
+        by considering factors like emotional distress, relationship issues, academic or work performance, and 
+        overall well-being.
+        
+        The Parent-Child Internet Addiction Test (PCIAT) assesses internet addiction in children and adolescents by 
+        combining self-assessment from the child and observations from the parent. It covers topics like time spent 
+        online, emotional impact, and consequences on daily life, school, and social interactions. The test aims to
+        provide a comprehensive view of internet use and its effects from both perspectives. In the present, scores 
+        for 20 questions are provided with missing values that cuase reduction in the total score.
+        """)
     st.write("Here you will find visualizations of SII distribution and related statistics.")
     st.image(os.path.join(figures_dir, "Distribution of SII.png"), use_column_width=True)
     st.image(os.path.join(figures_dir, "Distribution of PCIAT_Total.png"), use_column_width=True)
@@ -652,15 +668,6 @@ def sii_pciat_miss():
     | 3.0          | 80.0                      | 93.0                      |
     """
     st.markdown(table_md)
-    st.markdown("""
-        Let's also have a brief overview of PCIAT:
-        
-        The Parent-Child Internet Addiction Test (PC-IAT) assesses internet addiction in children and adolescents by 
-        combining self-assessment from the child and observations from the parent. It covers topics like time spent 
-        online, emotional impact, and consequences on daily life, school, and social interactions. The test aims to
-        provide a comprehensive view of internet use and its effects from both perspectives. In the present, scores 
-        for 20 questions are provided with missing values that cuase reduction in the total score.
-        """)
     st.markdown("""
         Second, let's review the mean imputation used for PCIAT question scores and total score.
         
