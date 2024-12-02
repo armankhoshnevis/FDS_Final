@@ -1,8 +1,9 @@
 import streamlit as st
 import os
 
-# Figures directory
-figures_dir = 'Figures'
+# Directories
+current_dir = os.path.dirname(os.path.abspath(__file__))
+figures_dir = os.path.join(current_dir, 'Figures')
 
 # Set up the main structure of the Streamlit App
 def main():
@@ -71,7 +72,7 @@ def introduction():
         """)
     st.markdown("Each data science step towards this dataset can be reviewed and explored in the side and top bars!")
     st.markdown("")
-    
+
 # EDA Section
 def eda():
     st.header("Exploratory Data Analysis (EDA)")
@@ -81,7 +82,6 @@ def eda():
                        "Physical Measures", "Bioelectric Impedance Analysis", "FitnessGram", "Sleep Disturbance", 
                        "Physical Activity Questionnaire"]
     eda_selected = st.selectbox("Select EDA subsection", eda_subsections)
-
     if eda_selected == "Age & Gender":
         age_gender()
     elif eda_selected == "SII and PCIAT":
@@ -133,8 +133,8 @@ def age_gender():
 def sii_visualization():
     st.subheader("Severity Impairment Index (SII) Visualization")
     st.write("Here you will find visualizations of SII distribution and related statistics.")
-    st.image("Distribution of SII.png", use_column_width=True)
-    st.image("Distribution of PCIAT_Total.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Distribution of SII.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "Distribution of PCIAT_Total.png"), use_column_width=True)
     st.markdown("""
     **Notes:**
     - 40% of the samples are not affected by the Internet use.
@@ -143,8 +143,8 @@ def sii_visualization():
     - 446 samples scored 0 on all PCIAT questions.
     """)
     st.write("Now, let's take a closer look here!")
-    st.image("SII and PCIAT_Total Box.png", use_column_width=True)
-    st.image("SII by Age Pi-Chart.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "SII and PCIAT_Total Box.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "SII by Age Pi-Chart.png"), use_column_width=True)
     
     table_md = """
     | Age Group          | Missing       | 0 (None)       | 1 (Mild)       | 2 (Moderate)   | 3 (Severe)     | Total |
@@ -169,8 +169,8 @@ def sii_visualization():
 def internet_use():
     st.subheader("Internet Use Analysis")
     st.write("Here you will find visualizations of the internet use distribution and related statistics.")
-    st.image("Internet Use Box.png", use_column_width=True)
-    st.image("Internet Use Pi.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Internet Use Box.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "Internet Use Pi.png"), use_column_width=True)
     table_md = """
     | Gender | Missing       | < 1hr/day       | ~ 1hr/day       | ~ 2hr/day      | > 3hr/day      | Total |
     |--------|---------------|---------------- |---------------- |----------------|----------------|-------|
@@ -187,8 +187,8 @@ def internet_use():
     - The pie charts for age groups are well aligned and shows the same.
     - Internet use in both genders is almost similar.
     """)
-    st.image("Internet Use Box2.png", use_column_width=True)
-    st.image("Internet Use Pi2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Internet Use Box2.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "Internet Use Pi2.png"), use_column_width=True)
     st.markdown("""
                 **Notes:**
                 - In the box plots, despite the considerable overlap between the different SII and internet use categories,
@@ -216,9 +216,9 @@ def cgas_analysis():
     on child mental health. The scores are divided into categories ranging from very low to high
     functioning to guide interventions.
                 """)
-    st.image("CGAS.png", use_column_width=True)
-    st.image("CGAS2.png", use_column_width=True)
-    st.image("CGAS3.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "CGAS.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "CGAS2.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "CGAS3.png"), use_column_width=True)
     st.markdown("""
     **Notes:**
     - Since the CGAS is a measure of general functioning, and the SII reflects the severity of the
@@ -236,7 +236,7 @@ def cgas_analysis():
 def physical_measure_analysis():
     st.subheader("Physical Measure")
     st.markdown("Let's analyze different aspects of the physical measures. Begin with general statistcs and distribution.")
-    st.image("Physical Measure1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Physical Measure1.png"), use_column_width=True)
     st.markdown("""Looking at the histograms, the range for each parameter looks okay, however, the following table show
                 another story with non-physical zero values that must be replaces with nan!""")
     table_md = """
@@ -265,7 +265,7 @@ def physical_measure_analysis():
     | Physical-Systolic_BP           | 2953 | 117.02     | 16.93      | 49.00 | 107.00   | 114.00   | 125.00   | 203.00    | 1007    |
     """
     st.markdown(table_md)
-    st.image("Physical Measure2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Physical Measure2.png"), use_column_width=True)
     st.markdown("""
     **Notes:**
     - There are individuals who are unusually tall for their age group or who are extremely overweight.
@@ -304,20 +304,20 @@ def physical_measure_analysis():
     **Note:**
     - We also know that systolic BP cannot be lower than diastolic BP! So, a few more nan samples are added!
     """)
-    st.image("Physical Measure3.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Physical Measure3.png"), use_column_width=True)
     st.markdown("""
         **Note:**
         - The absence of a clear direct correlation between heart rate and blood pressure in the plots suggests that
         the measurements were likely taken in a resting state or under non-stressful conditions.
         """)
-    st.image("Physical Measure4.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Physical Measure4.png"), use_column_width=True)
     st.markdown("""
         - There does not appear to be a strong, clear correlation between body mass index (BMI) and systolic blood
         pressure (BP).
         - As expected, there is a strong positive correlation between systolic and diastolic BP, but there are notable
         cases of isolated systolic or diastolic hypertension.
         """)
-    st.image("Physical Measure5.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Physical Measure5.png"), use_column_width=True)
     st.markdown("""
         **Notes:**
         - The positive correlation with the target is for height, weight, and waist circumference, which means that
@@ -342,8 +342,8 @@ def bia_analysis():
                 body parameters, including body fat percentage, lean mass, and total body water. BIA is commonly used
                 in health assessments, fitness evaluations, and clinical settings as a non-invasive and relatively
                 quick method to monitor body composition.""")
-    st.image("BIA1.png", use_column_width=True)
-    st.image("BIA2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "BIA1.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "BIA2.png"), use_column_width=True)
     st.markdown("""
         **Notes:**
         - The distribution of the various bioelectrical impedance analysis measurements in the data set indicates that
@@ -363,7 +363,7 @@ def FitnessGram():
                 typically used to evaluate how long an individual can maintain a certain pace or intensity before 
                 reaching fatigue.
                 """)
-    st.image("VT1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "VT1.png"), use_column_width=True)
     st.markdown("Let's take a look into possible missingness.")
     table_md = """
     | Fitness_Endurance-Max_Stage | Fitness_Endurance-Time_Mins | Fitness_Endurance-Time_Sec |
@@ -405,7 +405,7 @@ def FitnessGram():
         The data from the FitnessGram is used to track students' fitness over time and can be an important tool for 
         promoting health and encouraging physical activity in schools.
         """)
-    st.image("VT2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "VT2.png"), use_column_width=True)
     table_md = """
     | FGC Measurement      | Count   | Mean      | Std       | Min  | 25%   | 50%   | 75%     | Max   | Missing |
     |----------------------|---------|-----------|-----------|------|-------|-------|---------|-------|---------|
@@ -427,7 +427,7 @@ def FitnessGram():
                 - In addition, it also doesn't make sense to call this a children's FitnessGram, since participants of almost
                 all ages (5-21) were tested.
                 """)
-    st.image("VT3.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "VT3.png"), use_column_width=True)
     st.markdown("""
         **Note:**
         - Positive correlation between multiple physical performance measures and the PCIAT_Total score simply does not 
@@ -446,8 +446,8 @@ def sleep_analysis():
     time. It is particularly useful for identifying individuals who may be experiencing sleep problems related to
     conditions like insomnia, sleep apnea, or other health issues.
     """)
-    st.image("Sleep Disturbance1.png", use_column_width=True)
-    st.image("Sleep Disturbance2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Sleep Disturbance1.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "Sleep Disturbance2.png"), use_column_width=True)
     st.markdown("""
         **Note:**
         - Both the raw and T-scores for sleep disturbance are moderately variable, with some extreme values indicating
@@ -471,9 +471,9 @@ def paq_analysis():
         as the past week or month.
         """)
     st.subheader("Physical Activity Questionnaire (Adolescents)")
-    st.image("PA1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "PA1.png"), use_column_width=True)
     st.subheader("Physical Activity Questionnaire (Children)")
-    st.image("PA2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "PA2.png"), use_column_width=True)
     st.markdown("""
         **Notes:**
         - Age range for Adolescents (with PAQ_A_Total data): 13 - 18 years.
@@ -520,8 +520,8 @@ def missingness():
 # Missingness Overview Subsection
 def overview_miss():
     st.markdown("Let's take a look at the missingness heat map and percentage various features.")
-    st.image("overview_miss1.png", use_column_width=True)
-    st.image("overview_miss2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "overview_miss1.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "overview_miss2.png"), use_column_width=True)
     st.markdown("""Some of the features have seriouse missingness, while potentiall palying an important role for
                 the prediction task. In the next subsections, this missingness will be addressed, step by step. 
                 Moreover, in most of our missingness handling efforts, Iterative Imputer BayesianRidge and KNN 
@@ -529,8 +529,8 @@ def overview_miss():
 
 # Missingness of Weight, Height, and Waist Subsection
 def whw_miss():
-    st.image("imp_weight_height.png", use_column_width=True)
-    st.image("imp_bmi.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_weight_height.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_bmi.png"), use_column_width=True)
     st.markdown("""
         **Notes:**
         - Age, Height, and Weight are used for the imputation task.
@@ -543,7 +543,7 @@ def whw_miss():
         """)
     st.markdown("""Since weight and height have already been imputed, let's use them along with age to impute waist 
                 circumference.""")
-    st.image("imp_waistcircum.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_waistcircum.png"), use_column_width=True)
     st.markdown("""
         **Notes:**
         - Waist circumference had 77.32% missingness as it is evident from the above scatter plot. However, 
@@ -554,8 +554,8 @@ def whw_miss():
 def bphr_miss():
     st.markdown("""Upon plotting various scatter plots, weight, systolic bp, diastolic bp, and heart rate are imputed
                 together.""")
-    st.image("imp_bphr1.png", use_column_width=True)
-    st.image("imp_bphr2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_bphr1.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_bphr2.png"), use_column_width=True)
     st.markdown("""
         **Notes:**
         - Similar to the previous subsection, a min limit value of 10.0 is provided for the Bayes method as the min
@@ -575,9 +575,9 @@ def iu_miss():
         not change drastically.
         """)
     st.markdown("This is the imputed pie-chart.")
-    st.image("imp_internetuse.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_internetuse.png"), use_column_width=True)
     st.markdown("And this is the non-imputed pie-chart.")
-    st.image("Internet Use Pi2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "Internet Use Pi2.png"), use_column_width=True)
 
 # Missingness of Bio-electric Impedence Analysis Subsection
 def bia_miss():
@@ -590,8 +590,8 @@ def bia_miss():
         - Most of them have extreme min or max values.
         - Most of them have a very skewed distribution.
         """)
-    st.image("BIA2.png", use_column_width=True)
-    st.image("BIA1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "BIA2.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "BIA1.png"), use_column_width=True)
 
 # Missingness of Fitness Gram Child Subsection
 def fgc_miss():
@@ -599,16 +599,16 @@ def fgc_miss():
         All the fitness gram child features are imputed using age, gender, and bmi as auxiliary features. So, let's 
         first take a quick look at the correlation heatmap of these features.
         """)
-    st.image("imp_fgc1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_fgc1.png"), use_column_width=True)
     st.markdown("Now, here is the comparison non-imputed and KNN imputed features.")
-    st.image("imp_fgc2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_fgc2.png"), use_column_width=True)
 
 # Missingness of Sleep Disturbance Subsection
 def sd_miss():
     st.markdown("Let's first see which potential parameter be an auxilary parameter for imputing the scores.")
-    st.image("imp_sd1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_sd1.png"), use_column_width=True)
     st.markdown("Both raw and T scores are imputed using BMI.")
-    st.image("imp_sd2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_sd2.png"), use_column_width=True)
 
 # Missingness of Children's Global Assessment Scale Subsection
 def cgas_miss():
@@ -617,7 +617,7 @@ def cgas_miss():
         
         Here, the score is imputed using age, bmi, and weight as auxillary features.
         """)
-    st.image("imp_cgas.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_cgas.png"), use_column_width=True)
 
 # Missingness of the Remaining Features Subsection
 def remaining_miss():
@@ -625,7 +625,7 @@ def remaining_miss():
         Let's take a look at the missingness percentages up to now. We have imputed many features while
         dropping some other features!
         """)
-    st.image("imp_remaining1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_remaining1.png"), use_column_width=True)
     st.markdown("""
         **Notes:**
         - Physical activity questionnaires for both childer and adolescents have a significant missingness. Moreover, 
@@ -670,14 +670,13 @@ def sii_pciat_miss():
         than 3 missing question scores and use mean-imputation (with rounding!) to fill the missing scores. At the end,
         only 3 samples remain with more than 3 missing scores.
         """)
-    
     st.markdown("""
         Ultimately, let's take a look at the missing scores before and after the mean-imputation.
         """)
-    st.image("imp_pciat1.png", caption='Part of the missing PCIAT score before mean imputation.')
-    st.image("imp_pciat2.png", caption='Part of the missing PCIAT score after mean imputation.')
+    st.image(os.path.join(figures_dir, "imp_pciat1.png"), caption='Part of the missing PCIAT score before mean imputation.')
+    st.image(os.path.join(figures_dir, "imp_pciat2.png"), caption='Part of the missing PCIAT score after mean imputation.')
     st.markdown("Let's see the missing percentage one more time!")
-    st.image("imp_remaining2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "imp_remaining2.png"), use_column_width=True)
     st.markdown("""
         The ultimate goal of this project is to predict SII or equivalently PCIAT toal score. But, both (not 
         surperisingly by now), have 31% missingness after the mean-imputation effort, described above.
@@ -744,27 +743,27 @@ def pca_section():
         - **Step 1:** Dropping the target variable (sii), the scree plot determines the number of required PCs. 12 PCs
         are chosen as they explained 95% of the cumulative variability. The feature numbers are now halfed!
         """)
-    st.image("pc_1.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "pc_1.png"), use_column_width=True)
     st.markdown("""
         - **Step 2:** Let's visualize the data points, eventhough high differentiability is not expected!
         """)
-    st.image("pc_2.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "pc_2.png"), use_column_width=True)
     st.markdown("""
         - **Step 3:** Just out of curiosity, let's see how would K-Mean clustering work!
         """)
-    st.image("pc_3.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "pc_3.png"), use_column_width=True)
     st.markdown("""
         - **Step 4:** Now, let's visualize the contribution of features in PCs.
         """)
-    st.image("pc_4.png", use_column_width=True)
-    st.image("pc_5.png", use_column_width=True)
+    st.image(os.path.join(figures_dir, "pc_4.png"), use_column_width=True)
+    st.image(os.path.join(figures_dir, "pc_5.png"), use_column_width=True)
     st.markdown("""
         Features are as follows:
         
-        Basic_Demos-Age, Basic_Demos-Sex, CGAS-CGAS_Score, Physical-BMI, Physical-Height, 
-        Physical-Weight, Physical-Waist_Circumference, Physical-Diastolic_BP, Physical-HeartRate, 
-        Physical-Systolic_BP, FGC-FGC_CU, FGC-FGC_GSND, FGC-FGC_GSD, FGC-FGC_PU, FGC-FGC_SRL, FGC-FGC_SRR, FGC-FGC_TL
-        SDS-SDS_Total_Raw, SDS-SDS_Total_T, PreInt_EduHx-computerinternet_hoursday, sii.
+        0: Basic_Demos-Age, 1: Basic_Demos-Sex, 2: CGAS-CGAS_Score, 3: Physical-BMI, 4: Physical-Height, 
+        5: Physical-Weight, 6: Physical-Waist_Circumference, 7: Physical-Diastolic_BP, 8: Physical-HeartRate, 
+        9: Physical-Systolic_BP, 10: FGC-FGC_CU, 11: FGC-FGC_GSND, 12: FGC-FGC_GSD, 13: FGC-FGC_PU, 14: FGC-FGC_SRL,
+        15: FGC-FGC_SRR, 16: FGC-FGC_TL, 17: SDS-SDS_Total_Raw, 18: SDS-SDS_Total_T, 19: PreInt_EduHx-computerinternet_hoursday
         """)
 
 # Modeling Section
