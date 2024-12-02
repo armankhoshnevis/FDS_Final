@@ -25,7 +25,7 @@ def main():
 # Introduction Section
 def introduction():
     st.title("Child Mind Institute — Problematic Internet Use")
-    st.image("DALL·E 2024-12-02 11.55.25.webp", use_column_width=True)
+    st.image("DALL·E 2024-12-02 12.24.03.webp", use_column_width=True)
     st.header("Introduction")
     st.markdown("""
         The Healthy Brain Network (HBN) dataset is a clinical sample of about five-thousand 5-22 year-olds who have
