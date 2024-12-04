@@ -88,7 +88,6 @@ def introduction():
         
         [Data Source](https://www.kaggle.com/competitions/child-mind-institute-problematic-internet-use/overview)
         [GitHub](https://github.com/armankhoshnevis/FDS_Final)
-        [Contact](khoshne1@msu.edu)
         """)
     st.markdown("""
         ### Tabular Data - HBN Instruments
