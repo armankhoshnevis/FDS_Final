@@ -26,4 +26,6 @@ The tabular data in *train.csv* and *test.csv* comprises measurements from a var
 ## Links
 **[Project and Data Source](https://www.kaggle.com/competitions/child-mind-institute-problematic-internet-use/overview)**
 
-**[Streamlit Web Application](https://fdsfinal-gjxzf7h2ysk4frz9i4iweg.streamlit.app/)**
+**[Streamlit Web Application](https://fdsfinal-child-mind-institute-problematic-internet-use.streamlit.app/)**
+
+
