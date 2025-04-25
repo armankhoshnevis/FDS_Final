@@ -1,5 +1,7 @@
 # Foundation of Data Science (CMSE 830 - MSU) - Final Project:
 
+<img src="StreamlitApp/Figures/DALL_E_2024_12_02.webp" alt="Architecture Diagram" width="75%">
+
 ## Introduction
 The Healthy Brain Network (HBN) dataset is a clinical sample of about five-thousand 5-22 year-olds who have undergone both clinical and research screenings. The objective of the HBN study is to find biological markers that will improve the diagnosis and treatment of mental health and learning disorders from an objective biological perspective. Two elements of this study are being used for this project: internet usage behavior data physical activity data (wrist-worn accelerometer data, fitness assessments and questionnaires), the later is not covered in this web app. The goal of this project is to predict from this data a participant's **Severity Impairment Index** (`sii`), a standard measure of problematic internet use. The majority of measures are missing for most participants. In particular, the target sii is missing for a portion of the participants in the training set.
 
