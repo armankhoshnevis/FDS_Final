@@ -1,4 +1,4 @@
-# Foundation of Data Science (CMSE 830 - MSU) - Final Project:
+# Foundation of Data Science (CMSE 830 - MSU) - Final Project: Child Mind Institute — Problematic Internet Use
 
 <img src="StreamlitApp/Figures/DALL_E_2024_12_02.webp" alt="Architecture Diagram" width="75%">
 
